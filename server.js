@@ -1,6 +1,8 @@
 const express = require('express');
 const sequelize = require('./database');
 const Product = require('./models/product');
+const routes = require('./routes/product');
+const errorHandler = require('./utils/errorHandler');
 const app = express();
 require('dotenv').config();
 
@@ -15,6 +17,11 @@ sequelize.sync({ force: true }).then(async () => {
         await Product.create(product);
     }
 });
+
+app.use('/product', routes);
+
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`app is listening to port ${PORT}`);
