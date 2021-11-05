@@ -18,7 +18,6 @@ const getOne = async (req, res) => {
 
     const id = req.params.id;
 
-    console.log(Number.parseInt(id));
     if (Number.isNaN(Number.parseInt(id))) {
         return new InvalidIdException();
     }
@@ -33,4 +32,28 @@ const getOne = async (req, res) => {
 
 }
 
-module.exports = { getAll, getOne }
+const createOne = async (req, res) => {
+
+    const product = await Product.create(req.body);
+    res.send(product)
+
+}
+
+const editOne = async (req, res) => {
+
+    const id = req.params.id;
+    const body = req.body;
+
+    const product = await Product.update(body, { where: { id } });
+
+    res.send(product);
+
+}
+
+const deleteOne = async (req, res) => {
+    const id = req.params.id;
+    await Product.destroy({ where: { id: id } });
+    res.send({ message: 'product deleted' });
+}
+
+module.exports = { getAll, getOne, createOne, editOne, deleteOne };
