@@ -2,6 +2,7 @@ const express = require('express');
 const sequelize = require('./database');
 const Product = require('./models/product');
 const routes = require('./routes/product');
+var bodyParser = require('body-parser')
 const errorHandler = require('./utils/errorHandler');
 const app = express();
 require('dotenv').config();
@@ -17,6 +18,11 @@ sequelize.sync({ force: false }).then(async () => {
     //     await Product.create(product);
     // }
 });
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(express.json());
 
 app.use('/product', routes);
 
