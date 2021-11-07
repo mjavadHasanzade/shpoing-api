@@ -1,5 +1,6 @@
 const Product = require("../models/product");
 const { InvalidIdException, InvalidUserException } = require("../utils/exceptions");
+const productValidator = require("../validators/product");
 
 const getAll = async (req, res) => {
 
@@ -33,6 +34,12 @@ const getOne = async (req, res) => {
 }
 
 const createOne = async (req, res) => {
+
+    const err = productValidator(req.body);
+
+    if (err) {
+        return res.send(err)
+    }
 
     const product = await Product.create(req.body);
     res.send(product)
