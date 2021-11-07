@@ -9,14 +9,16 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 
-sequelize.sync({ force: false }).then(async () => {
-    // for (let i = 1; i <= 15; i++) {
-    //     const product = {
-    //         name: `product ${i}`,
-    //         description: `description ${i}`
-    //     }
-    //     await Product.create(product);
-    // }
+sequelize.sync({ force: true }).then(async () => {
+    for (let i = 1; i <= 15; i++) {
+        const product = {
+            name: `product ${i}`,
+            description: `description ${i}`,
+            price: Math.floor(Math.random() * 1000000),
+            quantity: Math.floor(Math.random() * 100)
+        }
+        await Product.create(product);
+    }
 });
 
 app.use(bodyParser.urlencoded({
