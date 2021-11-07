@@ -17,14 +17,14 @@ const Product = sequelize.define('products', {
         type: DataTypes.NUMBER,
         allowNull: true,
     },
-    category: {
-        type: DataTypes.ARRAY,
-        allowNull: true,
-    },
-    properties: {
-        type: DataTypes.ARRAY,
-        allowNull: true
-    },
+    // category: {
+    //     type: DataTypes.ARRAY(DataTypes.STRING),
+    //     allowNull: true,
+    // },
+    // properties: {
+    //     type: DataTypes.ARRAY(DataTypes.STRING),
+    //     allowNull: true
+    // },
     quantity: {
         type: DataTypes.NUMBER,
         allowNull: false,
