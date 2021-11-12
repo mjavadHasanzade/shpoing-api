@@ -1,0 +1,12 @@
+{
+    "product_create_success": "کالا با موفقیت ساخته شد.",
+    "product_edit_success": "کالا با موفقیت ویرایش شد.",
+    "product_delete_success": "کالا با موفقیت حذف شد. ",
+    "product_not_found_exception": "کالا یافت نشد.",
+    "invalid_id_exception": "Invalid Identifier",
+    "validation_exception": "Invalid Request Body",
+    "product_name_null": "نام کالا نمیتواند خالی باشد.",
+    "product_description_null": "توضیحات کالا نمیتواند خالی باشد",
+    "product_price_null": "قیمت کالا نمیتواند خالی باشد.",
+    "product_price_size": "حداقل عدد برای قیمت "
+}

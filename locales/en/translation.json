@@ -1,0 +1,12 @@
+{
+  "product_create_success": "product is created",
+  "product_edit_success": "product edited",
+  "product_delete_success": "product deleted",
+  "product_not_found_exception": "product not found",
+  "invalid_id_exception": "Invalid Identifier",
+  "validation_exception": "Invalid Request Body",
+  "product_name_null": "product name cannot be null",
+  "product_description_null": "product description cannot be null",
+  "product_price_null": "product price cannot be null",
+  "product_price_size": "product price must be atleast "
+}
