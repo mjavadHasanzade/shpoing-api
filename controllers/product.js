@@ -35,14 +35,14 @@ const getOne = async (req, res) => {
 
 const createOne = async (req, res) => {
 
-    const err = productValidator(req.body);
+    const { error } = productValidator(req);
 
-    if (err) {
-        return res.send(err)
+    if (error) {
+        return res.send(error.message);
     }
 
     const product = await Product.create(req.body);
-    res.send(product)
+    res.send({ product: product, message: req.t('product_create_success') })
 
 }
 
@@ -53,14 +53,14 @@ const editOne = async (req, res) => {
 
     const product = await Product.update(body, { where: { id } });
 
-    res.send(product);
+    res.send({ product, message: req.t('product_edit_success') });
 
 }
 
 const deleteOne = async (req, res) => {
     const id = req.params.id;
     await Product.destroy({ where: { id: id } });
-    res.send({ message: 'product deleted' });
+    res.send({ message: req.t('product_delete_success') });
 }
 
 module.exports = { getAll, getOne, createOne, editOne, deleteOne };
