@@ -6,8 +6,18 @@ var bodyParser = require('body-parser')
 const errorHandler = require('./utils/errorHandler');
 const app = express();
 require('dotenv').config();
+const i18next = require('i18next');
+const i18Backend = require('i18next-fs-backend');
+const i18Middleware = require('i18next-http-middleware');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
+
+i18next.use(i18Backend).use(i18Middleware.LanguageDetector).init({
+    fallbackLng: 'en',
+    backend: {
+        loadPath: './locales/{{lng}}/translation.json'
+    }
+})
 
 sequelize.sync({ force: true }).then(async () => {
     for (let i = 1; i <= 15; i++) {
@@ -24,7 +34,10 @@ sequelize.sync({ force: true }).then(async () => {
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(express.json());
+
+app.use(i18Middleware.handle(i18next));
 
 app.use('/product', routes);
 
