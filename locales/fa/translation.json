@@ -8,5 +8,15 @@
     "product_name_null": "نام کالا نمیتواند خالی باشد.",
     "product_description_null": "توضیحات کالا نمیتواند خالی باشد",
     "product_price_null": "قیمت کالا نمیتواند خالی باشد.",
-    "product_price_size": "حداقل عدد برای قیمت "
+    "product_price_size": "حداقل عدد برای قیمت ",
+    "user_not_found_exception": "کاربر پیدا نشد .",
+    "user_create_success": "کاربر ساخته شد .",
+    "user_edit_success": "کاربر ویرایش شد",
+    "user_delete_success": "کاربر پاک شد .",
+    "user_name_null": "نام کاربری نمیتواند خالی باشد.",
+    "password_null": "رمز عبور نمیتواند خالی باشد .",
+    "email_null": " ایمیل نمیتواند خالی باشد .",
+    "email_valid": "ایمیل وارد شده معتبر نیست .",
+    "pass_valid": "حداقل کاراکتر برای رمز عبور ",
+    "user_taken": "این ایمیل قبلا استفاده شده است ."
 }

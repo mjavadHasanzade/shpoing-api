@@ -8,5 +8,15 @@
   "product_name_null": "product name cannot be null",
   "product_description_null": "product description cannot be null",
   "product_price_null": "product price cannot be null",
-  "product_price_size": "product price must be atleast "
+  "product_price_size": "product price must be atleast ",
+  "user_not_found_exception": "user not found",
+  "user_create_success": "user is created",
+  "user_edit_success": "user edited",
+  "user_delete_success": "user deleted",
+  "user_name_null": "user name cannot be null",
+  "password_null": "user name cannot be null",
+  "email_null": "user name cannot be null",
+  "email_valid": "the entered mail is not valid",
+  "pass_valid": "minimum characters for password is ",
+  "user_taken": "this email is already taken"
 }
