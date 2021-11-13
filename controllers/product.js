@@ -1,5 +1,4 @@
 const Product = require("../models/product");
-const { InvalidIdException, InvalidUserException } = require("../utils/exceptions");
 const productValidator = require("../validators/product");
 
 const getAll = async (req, res) => {
@@ -19,17 +18,21 @@ const getOne = async (req, res) => {
 
     const id = req.params.id;
 
+
     if (Number.isNaN(Number.parseInt(id))) {
-        return new InvalidIdException();
+        res.status(400).send({ message: req.t('invalid_id_exception') });
+        return;
     }
 
-    const user = await Product.findOne({ where: { id: id } });
+    const product = await Product.findOne({ where: { id: id } });
 
 
-    // if (!user)
-    //     return new InvalidUserException();
+    if (!product) {
+        res.status(404).send({ message: req.t('product_not_found_exception') });
+        return;
+    }
 
-    res.send(user)
+    res.send(product);
 
 }
 
@@ -49,17 +52,41 @@ const createOne = async (req, res) => {
 const editOne = async (req, res) => {
 
     const id = req.params.id;
+
+    if (Number.isNaN(Number.parseInt(id))) {
+        res.status(400).send({ message: req.t('invalid_id_exception') });
+        return;
+    }
+
     const body = req.body;
 
     const product = await Product.update(body, { where: { id } });
 
-    res.send({ product, message: req.t('product_edit_success') });
+    if (product[0] == 0) {
+        res.status(404).send({ message: req.t('product_not_found_exception') });
+        return;
+    }
+
+    res.send({ product: product, message: req.t('product_edit_success') });
 
 }
 
 const deleteOne = async (req, res) => {
+
     const id = req.params.id;
-    await Product.destroy({ where: { id: id } });
+
+    if (Number.isNaN(Number.parseInt(id))) {
+        res.status(400).send({ message: req.t('invalid_id_exception') });
+        return;
+    }
+
+    const product = await Product.destroy({ where: { id: id } });
+
+    if (product == 0) {
+        res.status(404).send({ message: req.t('product_not_found_exception') });
+        return;
+    }
+
     res.send({ message: req.t('product_delete_success') });
 }
 
